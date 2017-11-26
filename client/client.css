@@ -1,0 +1,76 @@
+h1 {
+    color: black;
+    font-size: 24px;
+    font-family: Arial;
+}
+
+h2 {
+    color: black;
+    font-size: 15px;
+    font-style: italic; 
+    font-family: Arial;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #ff3399;
+    font-size: 15px; 
+    font-family: Arial;
+    margin-bottom: 40px;
+}
+
+table.list{
+    border-collapse: collapse;
+}
+
+table.list th {
+    text-align: left;
+    border: 1px solid black; 
+    background: black;
+    color: white;
+    padding: 15px;
+}
+
+table.list td {
+    text-align: left;
+    padding: 15px;
+}
+
+table.list tr:hover {
+    background-color: grey;
+}
+
+table.list tr:nth-child(even) {
+    background-color: #e4e4e4;
+}
+
+a:link, a:visited {
+    background-color: #ff3399;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 30px;
+}
+
+a:hover, a:active {
+    background-color: #99004d;
+}
+
+.err {
+    color:red;
+    font-weight: bold;
+}
+
+.box {
+    border: 1px solid green; 
+    background: #32CD32; 
+    width:350px; 
+    padding: 25px; 
+    font-size: 20px;
+}
+.error {
+    border: 1px solid red; 
+    background: #FF3366;
+}

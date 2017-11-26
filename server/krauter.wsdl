@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+Michal Krauter
+2017-05-19
+System for registering users with a SOAP into MySQL database.
+
+Online WSDL 1.1 SOAP generator 0.2
+Julien Blitte
+ -->
+<definitions name="System for registering users with a SOAP into MySQL database." targetNamespace="cz.krauter.user_system_soap.wsdl" xmlns:tns="cz.krauter.user_system_soap.wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="cz.krauter.user_system_soap.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<!-- response messages -->
+	<message name="returns_hodnotaall">
+	<part name="hodnotaall" type="xsd:array"/>
+	</message>
+	<message name="returns_hodnotabool">
+	<part name="hodnotabool" type="xsd:bool"/>
+	</message>
+<!-- request messages -->
+	<message name="SelectAll">
+	<part name="void" type="xsd:void"/>
+	</message>
+	<message name="InsertUser">
+	<part name="name" type="xsd:string"/>
+	<part name="email" type="xsd:string"/>
+	<part name="passwd" type="xsd:string"/>
+	<part name="authority" type="xsd:string"/>
+	</message>
+<!-- server's services -->
+	<portType name="SOAP user system">
+		<operation name="SelectAll">
+		<input message="tns:SelectAll"/>
+		<output message="tns:returns_hodnotaall"/>
+		</operation>
+		<operation name="InsertUser">
+		<input message="tns:InsertUser"/>
+		<output message="tns:returns_hodnotabool"/>
+		</operation>
+	</portType>
+<!-- server encoding -->
+	<binding name="SOAP user system_webservices" type="tns:SOAP user system">
+	<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="SelectAll">
+		<soap:operation soapAction="urn:xmethods-delayed-quotes#SelectAll"/>
+		<input><soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+		<output><soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+		</operation>
+		<operation name="InsertUser">
+		<soap:operation soapAction="urn:xmethods-delayed-quotes#InsertUser"/>
+		<input><soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></input>
+		<output><soap:body use="encoded" namespace="urn:xmethods-delayed-quotes" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/></output>
+		</operation>
+	</binding>
+<!-- access to service provider -->
+	<service name="oxy test">
+	<port name="oxy test_0" binding="SOAP user system_webservices">
+	<soap:address location="http://oxy-krauter.9e.cz/soap-server.php"/>
+	</port>
+	</service>
+</definitions>
